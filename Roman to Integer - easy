@@ -1,0 +1,53 @@
+import UIKit
+
+class Solution {
+    func romanToInt(_ s: String) -> Int {
+        
+        var masInt = [Int]()
+        var summa = 0
+        
+        for letter in s {
+            switch letter {
+            case "I":
+                masInt.append(1)
+            case "V":
+                masInt.append(5)
+            case "X":
+                masInt.append(10)
+            case "L":
+                masInt.append(50)
+            case "C":
+                masInt.append(100)
+            case "D":
+                masInt.append(500)
+            case "M":
+                masInt.append(1000)
+            default:
+                return summa
+            }
+        }
+        
+        masInt.append(0)
+        
+        print(masInt)
+        
+        for index in (0 ..< masInt.count - 1) {
+            if masInt[index + 1] > masInt[index] {
+                masInt[index + 1] = masInt[index + 1] - masInt[index]
+                masInt[index] = 0
+            }
+        }
+        
+        print(masInt)
+        
+        for item in masInt {
+            summa += item
+        }
+        
+        return summa
+    }
+}
+
+
+//let s = "MCMXCIV"
+//print(Solution().romanToInt(s))
